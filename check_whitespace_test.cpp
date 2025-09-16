@@ -3,23 +3,38 @@
 #include "check_whitespace.h"
 
 TEST(strip, EmptyString) {
-    ASSERT_STREQ("", strip(""));
+    char const* str = strip("");
+    ASSERT_STREQ("", str);
+    free((void*)str);
+    str = NULL;
 }
 
 TEST(strip, NoWhitespace) {
-    ASSERT_STREQ("frog", strip("frog"));
+    char const* str = strip("frog");
+    ASSERT_STREQ("frog", str);
+    free((void*)str);
+    str = NULL;
 }
 
 TEST(strip, WhitespaceOnFront) {
-    ASSERT_STREQ("frog", strip("   frog"));
+    char const* str = strip("   frog");
+    ASSERT_STREQ("frog", str);
+    free((void*)str);
+    str = NULL;
 }
 
 TEST(strip, WhitespaceOnBack) {
-    ASSERT_STREQ("frog", strip("frog  "));
+    char const* str = strip("frog  ");
+    ASSERT_STREQ("frog", str);
+    free((void*)str);
+    str = NULL;
 }
 
 TEST(strip, WhitespaceOnBothEnds) {
-    ASSERT_STREQ("frog", strip("  frog     "));
+    char const* str = strip("  frog     ");
+    ASSERT_STREQ("frog", str);
+    free((void*)str);
+    str = NULL;
 }
 
 TEST(is_clean, EmptyString) {

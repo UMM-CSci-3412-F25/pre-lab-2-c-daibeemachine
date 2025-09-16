@@ -28,7 +28,7 @@ char const *strip(char const *str) {
   // consisted of nothing but spaces, so we'll return the
   // empty string.
   if (num_spaces >= size) {
-    return "";
+    return ((char* const) calloc(1, sizeof(char)));
   }
 
   // Allocate a slot for all the "saved" characters
@@ -60,8 +60,9 @@ int is_clean(char const *str) {
   // 0 if they're equal, and a positive value if the first is
   // greater than the second.
   int result = strcmp(str, cleaned);
+
   free((void*)cleaned);
-
-
+  cleaned = NULL;
+  
   return result == 0;
 }
